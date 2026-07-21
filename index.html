@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bluexche Hostel — Book Your Stay</title>
+    <meta
+      name="description"
+      content="Bluexche Hostel — Business AC, Economy, and Simple rooms. One room, two guests. Clear rent, meals, policies, and map."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header search-header">
+      <a class="logo" href="#searchTop" aria-label="Bluexche home">
+        <span class="logo-mark">B</span>
+        <span>Bluexche</span>
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open menu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="#results">Hotels</a>
+        <a href="#results">Rooms</a>
+        <a href="#results">Offers</a>
+        <a href="#searchFooter">Help</a>
+        <a class="manage-link" href="#searchTop">Manage booking</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="searchTop" class="search-page">
+        <div class="search-hero">
+          <div class="search-shell">
+            <p class="search-eyebrow">Find your perfect stay</p>
+            <h1>Hotels in Karachi</h1>
+
+            <form id="hotelSearch" class="hotel-search-form">
+              <label class="search-field search-location">
+                <span>Where do you want to stay?</span>
+                <input
+                  id="destination"
+                  type="search"
+                  value="Karachi, Pakistan"
+                  placeholder="City, area or hotel"
+                />
+              </label>
+              <label class="search-field">
+                <span>Check in</span>
+                <input id="checkIn" type="date" required />
+              </label>
+              <label class="search-field">
+                <span>Check out</span>
+                <input id="checkOut" type="date" required />
+              </label>
+              <label class="search-field">
+                <span>Rooms &amp; guests</span>
+                <select id="searchGuests">
+                  <option value="1">1 room, 1 guest</option>
+                  <option value="2" selected>1 room, 2 guests</option>
+                </select>
+              </label>
+              <button class="search-submit" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="results" class="results-shell">
+          <div class="results-heading">
+            <div>
+              <p class="results-kicker">Your search</p>
+              <h2><span id="resultCount">3</span> hotels found</h2>
+              <p id="searchSummary">Karachi · 1 room · 2 guests</p>
+            </div>
+            <div class="results-tools">
+              <button id="filterToggle" class="mobile-filter-btn" type="button">
+                Filters
+              </button>
+              <label class="sort-control">
+                <span>Sort by</span>
+                <select id="sortResults">
+                  <option value="recommended">Recommended</option>
+                  <option value="low">Price: low to high</option>
+                  <option value="high">Price: high to low</option>
+                  <option value="rating">Guest rating</option>
+                </select>
+              </label>
+              <div class="view-switch" aria-label="Result view">
+                <button class="view-btn active" type="button" data-view="list">
+                  List
+                </button>
+                <button class="view-btn" type="button" data-view="map">Map</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-layout">
+            <aside id="filters" class="filters-panel">
+              <div class="filter-title">
+                <h3>Filter hotels</h3>
+                <button id="clearFilters" type="button">Clear all</button>
+              </div>
+
+              <fieldset>
+                <legend>Room type</legend>
+                <label>
+                  <input type="checkbox" name="roomFilter" value="business" />
+                  Business AC
+                </label>
+                <label>
+                  <input type="checkbox" name="roomFilter" value="economy" />
+                  Economy
+                </label>
+                <label>
+                  <input type="checkbox" name="roomFilter" value="simple" />
+                  Simple
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Price per night</legend>
+                <label>
+                  <input type="radio" name="priceFilter" value="all" checked />
+                  Any price
+                </label>
+                <label>
+                  <input type="radio" name="priceFilter" value="2500" />
+                  Under Rs 2,500
+                </label>
+                <label>
+                  <input type="radio" name="priceFilter" value="3500" />
+                  Under Rs 3,500
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Facilities</legend>
+                <label><input type="checkbox" value="wifi" /> Free Wi-Fi</label>
+                <label><input type="checkbox" value="meals" /> Meals available</label>
+                <label><input type="checkbox" value="delivery" /> Room delivery</label>
+                <label><input type="checkbox" value="ac" /> Air conditioning</label>
+              </fieldset>
+
+              <div class="regular-offer">
+                <span>20% OFF</span>
+                <strong>Regular stay saving</strong>
+                <p>Book 7+ nights and save 20% on room rent.</p>
+              </div>
+            </aside>
+
+            <div class="results-content">
+              <div id="hotelList" class="hotel-list">
+                <article
+                  class="hotel-result"
+                  data-room="business"
+                  data-price="4500"
+                  data-rating="9.1"
+                >
+                  <div class="hotel-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=82"
+                      alt="Bluexche Business hotel room"
+                    />
+                    <span class="image-badge">Most popular</span>
+                  </div>
+                  <div class="hotel-info">
+                    <p class="hotel-distance">Shahrah-e-Faisal · 1.2 km away</p>
+                    <h3>Bluexche Karachi Central</h3>
+                    <div class="rating-row">
+                      <strong>9.1 Superb</strong>
+                      <span>214 reviews</span>
+                    </div>
+                    <ul class="facility-row">
+                      <li>Free Wi-Fi</li>
+                      <li>AC</li>
+                      <li>Room delivery</li>
+                    </ul>
+                    <button class="details-link" type="button" data-room="business">
+                      Hotel details
+                    </button>
+                  </div>
+                  <div class="hotel-price">
+                    <p>From</p>
+                    <strong>Rs 4,500</strong>
+                    <span>per room / night</span>
+                    <small>1 room · up to 2 guests</small>
+                    <span class="save-label">Save 20% on 7+ nights</span>
+                    <button class="select-room-btn" type="button" data-room="business">
+                      View rooms
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  class="hotel-result"
+                  data-room="economy"
+                  data-price="2800"
+                  data-rating="8.7"
+                >
+                  <div class="hotel-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=82"
+                      alt="Bluexche Economy hotel room"
+                    />
+                    <span class="image-badge offer">Great value</span>
+                  </div>
+                  <div class="hotel-info">
+                    <p class="hotel-distance">Gulshan-e-Iqbal · 4.8 km away</p>
+                    <h3>Bluexche City View</h3>
+                    <div class="rating-row">
+                      <strong>8.7 Excellent</strong>
+                      <span>168 reviews</span>
+                    </div>
+                    <ul class="facility-row">
+                      <li>Free Wi-Fi</li>
+                      <li>Meals</li>
+                      <li>Secure locker</li>
+                    </ul>
+                    <button class="details-link" type="button" data-room="economy">
+                      Hotel details
+                    </button>
+                  </div>
+                  <div class="hotel-price">
+                    <p>From</p>
+                    <strong>Rs 2,800</strong>
+                    <span>per room / night</span>
+                    <small>1 room · up to 2 guests</small>
+                    <span class="save-label">Save 20% on 7+ nights</span>
+                    <button class="select-room-btn" type="button" data-room="economy">
+                      View rooms
+                    </button>
+                  </div>
+                </article>
+
+                <article
+                  class="hotel-result"
+                  data-room="simple"
+                  data-price="1800"
+                  data-rating="8.2"
+                >
+                  <div class="hotel-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=82"
+                      alt="Bluexche Simple budget hotel room"
+                    />
+                  </div>
+                  <div class="hotel-info">
+                    <p class="hotel-distance">Saddar · 2.5 km away</p>
+                    <h3>Bluexche Budget Stay</h3>
+                    <div class="rating-row">
+                      <strong>8.2 Very good</strong>
+                      <span>96 reviews</span>
+                    </div>
+                    <ul class="facility-row">
+                      <li>Free Wi-Fi</li>
+                      <li>Shared lounge</li>
+                      <li>Drinking water</li>
+                    </ul>
+                    <button class="details-link" type="button" data-room="simple">
+                      Hotel details
+                    </button>
+                  </div>
+                  <div class="hotel-price">
+                    <p>From</p>
+                    <strong>Rs 1,800</strong>
+                    <span>per room / night</span>
+                    <small>1 room · up to 2 guests</small>
+                    <span class="save-label">Save 20% on 7+ nights</span>
+                    <button class="select-room-btn" type="button" data-room="simple">
+                      View rooms
+                    </button>
+                  </div>
+                </article>
+              </div>
+
+              <div id="emptyResults" class="empty-results" hidden>
+                <h3>No hotels match these filters</h3>
+                <p>Clear your filters to see all available stays.</p>
+              </div>
+
+              <div id="mapView" class="results-map" hidden>
+                <iframe
+                  title="Bluexche hotels map"
+                  loading="lazy"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=66.95%2C24.80%2C67.18%2C24.98&amp;layer=mapnik&amp;marker=24.8725%2C67.0900"
+                ></iframe>
+                <div class="map-price map-price-one">Rs 4,500</div>
+                <div class="map-price map-price-two">Rs 2,800</div>
+                <div class="map-price map-price-three">Rs 1,800</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer id="searchFooter" class="search-footer">
+          <div>
+            <a class="logo footer-logo" href="#searchTop">
+              <span class="logo-mark">B</span>
+              <span>Bluexche</span>
+            </a>
+            <p>Comfortable rooms. Clear prices. Easy booking.</p>
+          </div>
+          <div>
+            <strong>Explore</strong>
+            <a href="#results">Our hotels</a>
+            <a href="#results">Offers</a>
+            <a href="#results">Room types</a>
+          </div>
+          <div>
+            <strong>Help</strong>
+            <a href="mailto:stay@bluexche.com">Contact us</a>
+            <a href="#searchTop">Manage booking</a>
+            <a href="#searchTop">Booking policy</a>
+          </div>
+        </footer>
+      </section>
+
+      <dialog id="searchRoomDialog" class="search-room-dialog">
+        <button class="search-dialog-close" type="button" aria-label="Close">×</button>
+        <div class="search-dialog-image">
+          <img id="searchDialogImage" src="" alt="" />
+        </div>
+        <div class="search-dialog-body">
+          <p class="results-kicker">Your selected stay</p>
+          <h2 id="searchDialogTitle">Room</h2>
+          <p id="searchDialogText"></p>
+          <div class="dialog-booking-summary">
+            <span id="searchDialogDates">Select dates above</span>
+            <span>1 room · <b id="searchDialogGuests">2 guests</b></span>
+          </div>
+          <div class="dialog-rate-row">
+            <div>
+              <small>Room only</small>
+              <strong id="searchDialogPrice">Rs 0</strong>
+              <span>per night</span>
+            </div>
+            <button id="reserveSearchRoom" type="button">Reserve room</button>
+          </div>
+          <p class="dialog-saving">Stay 7+ nights to receive 20% off room rent.</p>
+          <p id="searchBookingStatus" class="search-booking-status" role="status"></p>
+        </div>
+      </dialog>
+
+      <section id="home" class="hero">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-veil" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="brand reveal">Bluexche</p>
+          <h1 class="reveal delay-1">Stay sharp. Sleep easy.</h1>
+          <p class="lede reveal delay-2">
+            Private hostel rooms in the city — one room, up to two guests.
+          </p>
+          <a class="cta reveal delay-3" href="#booking">Reserve a night</a>
+        </div>
+      </section>
+
+      <section class="thumb-strip" aria-label="Room types">
+        <div class="thumb-rail">
+          <p class="rail-label reveal">Choose your room</p>
+          <div class="thumb-inner">
+            <article class="thumb reveal">
+              <div class="thumb-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=700&q=80"
+                  alt="Business AC room thumbnail"
+                  width="400"
+                  height="280"
+                />
+                <div class="thumb-price">
+                  <span>Business AC</span>
+                  <strong>Rs 4,500 <small>/ day</small></strong>
+                </div>
+              </div>
+              <div class="thumb-summary">
+                <span class="thumb-meta">1 room · up to 2 guests</span>
+                <span class="discount-badge">20% off regular stays</span>
+              </div>
+              <button class="room-book-btn" type="button" data-room="business">
+                Book now
+              </button>
+            </article>
+
+            <article class="thumb thumb-offset reveal delay-1">
+              <div class="thumb-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=700&q=80"
+                  alt="Economy room thumbnail"
+                  width="400"
+                  height="280"
+                />
+                <div class="thumb-price">
+                  <span>Economy</span>
+                  <strong>Rs 2,800 <small>/ day</small></strong>
+                </div>
+              </div>
+              <div class="thumb-summary">
+                <span class="thumb-meta">1 room · up to 2 guests</span>
+                <span class="discount-badge">20% off regular stays</span>
+              </div>
+              <button class="room-book-btn" type="button" data-room="economy">
+                Book now
+              </button>
+            </article>
+
+            <article class="thumb reveal delay-2">
+              <div class="thumb-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=700&q=80"
+                  alt="Simple room thumbnail"
+                  width="400"
+                  height="280"
+                />
+                <div class="thumb-price">
+                  <span>Simple</span>
+                  <strong>Rs 1,800 <small>/ day</small></strong>
+                </div>
+              </div>
+              <div class="thumb-summary">
+                <span class="thumb-meta">1 room · up to 2 guests</span>
+                <span class="discount-badge">20% off regular stays</span>
+              </div>
+              <button class="room-book-btn" type="button" data-room="simple">
+                Book now
+              </button>
+            </article>
+          </div>
+        </div>
+        <p class="thumb-note reveal delay-3">
+          Stay 7 days or longer and get 20% off room rent.
+        </p>
+      </section>
+
+      <dialog class="room-dialog" id="roomDialog" aria-labelledby="dialogTitle">
+        <button class="dialog-close" type="button" aria-label="Close room details">
+          ×
+        </button>
+        <img id="dialogImage" src="" alt="" width="900" height="520" />
+        <div class="dialog-body">
+          <p class="dialog-kicker">Room details</p>
+          <h2 id="dialogTitle"></h2>
+          <div class="dialog-facts">
+            <span id="dialogRent"></span>
+            <span>1 room · up to 2 guests</span>
+            <span class="dialog-discount">20% off rent for 7+ days</span>
+          </div>
+          <p id="dialogMeal"></p>
+          <h3>Included services</h3>
+          <ul id="dialogServices" class="dialog-services"></ul>
+          <button id="continueBooking" class="cta" type="button">
+            Continue to booking
+          </button>
+        </div>
+      </dialog>
+
+      <section id="about" class="section about">
+        <div class="section-inner about-grid">
+          <h2 class="reveal">About</h2>
+          <div class="about-copy reveal delay-1">
+            <p>
+              Bluexche is a compact hostel built for short city stays — clear
+              daily rent, meals by room type, and optional room delivery.
+            </p>
+            <p>
+              Every booking is <strong>1 room</strong> for up to
+              <strong>2 guests</strong>. Rates stay the same every day of the
+              week.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="section menu">
+        <div class="section-inner">
+          <h2 class="reveal">Menu</h2>
+          <p class="section-lede reveal delay-1">
+            Room photos, rent, food price, and what each stay includes.
+          </p>
+
+          <article id="room-business" class="room-card reveal">
+            <img
+              class="room-photo"
+              src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1400&q=80"
+              alt="Business AC room with bed and workspace"
+              width="1400"
+              height="800"
+            />
+            <div class="room-body">
+              <div class="room-title-row">
+                <h3>Business AC Room</h3>
+                <span class="occupancy">1 room · 2 guests</span>
+              </div>
+              <ul class="rate-list">
+                <li><strong>Daily rent:</strong> Rs 4,500 / day</li>
+                <li><strong>Meals (food):</strong> Rs 1,200 / day</li>
+                <li><strong>Total with meals:</strong> Rs 5,700 / day</li>
+              </ul>
+              <p class="includes-label">This also includes</p>
+              <ul class="includes">
+                <li>Private AC room</li>
+                <li>Attached washroom</li>
+                <li>Work desk &amp; high-speed Wi‑Fi</li>
+                <li>Daily housekeeping</li>
+                <li>Breakfast + lunch + dinner option</li>
+              </ul>
+            </div>
+          </article>
+
+          <article id="room-economy" class="room-card reveal">
+            <img
+              class="room-photo"
+              src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1400&q=80"
+              alt="Economy hostel room"
+              width="1400"
+              height="800"
+            />
+            <div class="room-body">
+              <div class="room-title-row">
+                <h3>Economy Room</h3>
+                <span class="occupancy">1 room · 2 guests</span>
+              </div>
+              <ul class="rate-list">
+                <li><strong>Daily rent:</strong> Rs 2,800 / day</li>
+                <li><strong>Meals (food):</strong> Rs 900 / day</li>
+                <li><strong>Total with meals:</strong> Rs 3,700 / day</li>
+              </ul>
+              <p class="includes-label">This also includes</p>
+              <ul class="includes">
+                <li>Fan / cooler comfort</li>
+                <li>Shared or attached washroom (as available)</li>
+                <li>Wi‑Fi access</li>
+                <li>Locker space</li>
+                <li>Two meals option (lunch + dinner)</li>
+              </ul>
+            </div>
+          </article>
+
+          <article id="room-simple" class="room-card reveal">
+            <img
+              class="room-photo"
+              src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1400&q=80"
+              alt="Simple budget hostel room"
+              width="1400"
+              height="800"
+            />
+            <div class="room-body">
+              <div class="room-title-row">
+                <h3>Simple Room</h3>
+                <span class="occupancy">1 room · 2 guests</span>
+              </div>
+              <ul class="rate-list">
+                <li><strong>Daily rent:</strong> Rs 1,800 / day</li>
+                <li><strong>Meals (food):</strong> Rs 650 / day</li>
+                <li><strong>Total with meals:</strong> Rs 2,450 / day</li>
+              </ul>
+              <p class="includes-label">This also includes</p>
+              <ul class="includes">
+                <li>Clean bed &amp; basic bedding</li>
+                <li>Shared washroom</li>
+                <li>Common lounge access</li>
+                <li>Drinking water</li>
+                <li>One meal option (dinner)</li>
+              </ul>
+            </div>
+          </article>
+
+          <div id="delivery" class="menu-block reveal">
+            <h3>Room delivery</h3>
+            <p>
+              Bags, meals, or essentials brought to your door — available for
+              every room type.
+            </p>
+            <ul class="rate-list">
+              <li><strong>In-hostel delivery:</strong> Rs 150 / trip</li>
+              <li><strong>Nearby pickup (2 km):</strong> Rs 350 / trip</li>
+              <li><strong>Meal tray to room:</strong> included with meal plan</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section services-section">
+        <div class="section-inner">
+          <h2 class="reveal">Services</h2>
+          <p class="section-lede reveal delay-1">
+            Everything around the room — so your stay stays easy.
+          </p>
+          <ul class="services-board">
+            <li class="reveal">
+              <span class="svc-num">01</span>
+              <h3>24/7 reception</h3>
+              <p>Late check-in, local tips, and guest help any hour.</p>
+            </li>
+            <li class="reveal delay-1">
+              <span class="svc-num">02</span>
+              <h3>Laundry desk</h3>
+              <p>Same-day wash &amp; fold with a fixed daily add-on.</p>
+            </li>
+            <li class="reveal delay-2">
+              <span class="svc-num">03</span>
+              <h3>Fast Wi‑Fi</h3>
+              <p>Lobby + rooms, plus a quiet study corner downstairs.</p>
+            </li>
+            <li class="reveal">
+              <span class="svc-num">04</span>
+              <h3>Security</h3>
+              <p>CCTV in common areas and lockable private rooms.</p>
+            </li>
+            <li class="reveal delay-1">
+              <span class="svc-num">05</span>
+              <h3>Room delivery</h3>
+              <p>Luggage, water, and meal trays straight to your room.</p>
+            </li>
+            <li class="reveal delay-2">
+              <span class="svc-num">06</span>
+              <h3>Housekeeping</h3>
+              <p>Daily tidy for Business AC; on-request for other rooms.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="policies" class="section policies-section">
+        <div class="section-inner">
+          <h2 class="reveal">Policies overview</h2>
+          <p class="section-lede reveal delay-1">
+            Short rules — so booking stays fair for everyone.
+          </p>
+          <ol class="policy-list">
+            <li class="reveal">
+              <h3>Occupancy</h3>
+              <p>
+                Each booking is <strong>1 room</strong> for a maximum of
+                <strong>2 guests</strong>. Extra guests are not allowed.
+              </p>
+            </li>
+            <li class="reveal delay-1">
+              <h3>Check-in / check-out</h3>
+              <p>Check-in from 2:00 PM. Check-out by 11:00 AM next day.</p>
+            </li>
+            <li class="reveal delay-2">
+              <h3>Rates</h3>
+              <p>
+                Daily rent and meal prices are fixed — same rate every day of
+                the week. No weekend surge.
+              </p>
+            </li>
+            <li class="reveal">
+              <h3>ID &amp; booking</h3>
+              <p>
+                Valid CNIC or passport required at reception. Booking date must
+                match your arrival day.
+              </p>
+            </li>
+            <li class="reveal delay-1">
+              <h3>Cancellation</h3>
+              <p>
+                Free cancel up to 24 hours before arrival. Later cancels keep one
+                day’s rent.
+              </p>
+            </li>
+            <li class="reveal delay-2">
+              <h3>House rules</h3>
+              <p>
+                No smoking indoors. Quiet hours 11:00 PM – 7:00 AM. Visitors
+                only in lobby.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="location" class="section location-section">
+        <div class="section-inner">
+          <h2 class="reveal">Location</h2>
+          <p class="section-lede reveal delay-1">
+            Bluexche Hostel — near Shahrah-e-Faisal, Karachi. Easy city access.
+          </p>
+          <div class="map-frame reveal delay-2">
+            <iframe
+              title="Bluexche Hostel location map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=67.0700%2C24.8600%2C67.1100%2C24.8850&amp;layer=mapnik&amp;marker=24.8725%2C67.0900"
+            ></iframe>
+          </div>
+          <p class="map-address reveal delay-3">
+            Plot 12, Block B · Near Shahrah-e-Faisal · Karachi
+            <a
+              class="map-link"
+              href="https://www.openstreetmap.org/?mlat=24.8725&amp;mlon=67.0900#map=15/24.8725/67.0900"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open full map</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section id="booking" class="section contact">
+        <div class="section-inner">
+          <h2 class="reveal">Book a room</h2>
+          <p class="section-lede reveal delay-1">
+            1 room · max 2 guests · same daily rate every day.
+          </p>
+
+          <form class="contact-form booking-form reveal delay-2" novalidate>
+            <div class="field">
+              <label for="guestName">Full name</label>
+              <input
+                id="guestName"
+                name="guestName"
+                type="text"
+                autocomplete="name"
+                required
+              />
+              <span class="error" data-error-for="guestName"></span>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                list="email-suggestions"
+                required
+              />
+              <datalist id="email-suggestions">
+                <option value="guest@bluexche.com"></option>
+                <option value="hello@gmail.com"></option>
+                <option value="booking@yahoo.com"></option>
+              </datalist>
+              <span class="error" data-error-for="email"></span>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                placeholder="03XXXXXXXXX"
+                required
+              />
+              <span class="error" data-error-for="phone"></span>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="bookingDate">Booking date</label>
+                <input
+                  id="bookingDate"
+                  name="bookingDate"
+                  type="date"
+                  required
+                />
+                <span class="error" data-error-for="bookingDate"></span>
+              </div>
+              <div class="field">
+                <label for="days">Days</label>
+                <input
+                  id="days"
+                  name="days"
+                  type="number"
+                  min="1"
+                  max="60"
+                  value="1"
+                  required
+                />
+                <span class="error" data-error-for="days"></span>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="rooms">Rooms</label>
+                <input
+                  id="rooms"
+                  name="rooms"
+                  type="number"
+                  min="1"
+                  max="1"
+                  value="1"
+                  readonly
+                />
+                <span class="hint">Fixed: 1 room per booking</span>
+              </div>
+              <div class="field">
+                <label for="guests">Guests</label>
+                <select id="guests" name="guests" required>
+                  <option value="1">1 guest</option>
+                  <option value="2" selected>2 guests</option>
+                </select>
+                <span class="hint">Max 2 guests per room</span>
+                <span class="error" data-error-for="guests"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="roomType">Room type</label>
+              <select id="roomType" name="roomType" required>
+                <option value="">Select room</option>
+                <option value="business">Business AC — rent Rs 4,500/day</option>
+                <option value="economy">Economy — rent Rs 2,800/day</option>
+                <option value="simple">Simple — rent Rs 1,800/day</option>
+              </select>
+              <span class="error" data-error-for="roomType"></span>
+            </div>
+
+            <div class="field">
+              <label class="check-label">
+                <input id="includeMeals" name="includeMeals" type="checkbox" />
+                <span>Include meals (food price by room type)</span>
+              </label>
+            </div>
+
+            <div class="field">
+              <label class="check-label">
+                <input id="roomDelivery" name="roomDelivery" type="checkbox" />
+                <span>Add room delivery (Rs 150)</span>
+              </label>
+            </div>
+
+            <div class="quote-box" aria-live="polite">
+              <p><strong>Occupancy:</strong> <span id="occLine">1 room · 2 guests</span></p>
+              <p><strong>Rent / day:</strong> <span id="rentDay">—</span></p>
+              <p><strong>Food / day:</strong> <span id="foodDay">—</span></p>
+              <p><strong>Regular-stay discount:</strong> <span id="discountLine">Add 7+ days to save 20%</span></p>
+              <p><strong>Estimated total:</strong> <span id="totalCost">—</span></p>
+            </div>
+
+            <button type="submit" class="cta">Confirm booking</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><span class="logo">Bluexche</span> — one room, two guests</p>
+      <p class="muted">© <span id="year"></span> All rights reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
